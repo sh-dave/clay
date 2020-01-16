@@ -94,12 +94,12 @@ class App {
 		var _khaOpt = parseOptions(options);
 
 		System.start(
-			_khaOpt, 
+			_khaOpt,
 			function(_) {
 				ready(onReady);
 			}
 		);
-		
+
 	}
 
 	public function shutdown() {
@@ -125,7 +125,7 @@ class App {
 	}
 
 	function ready(onReady:()->Void) {
-		
+
 		_debug("ready");
 
 		clay.Clay.app = this;
@@ -135,7 +135,7 @@ class App {
 
 		emitter = new Emitter();
 		events = new Events();
-		
+
 		tween = new TweenManager();
 		random = new Random(_options.randomSeed);
 		timer = new TimerManager();
@@ -144,7 +144,7 @@ class App {
 		draw = new Draw();
 		screen = new Screen(_options.antialiasing);
 		audio = new Audio();
-		
+
 		input = new InputManager(this);
 		resources = new ResourceManager();
 
@@ -152,12 +152,12 @@ class App {
 
 
 		if(_options.noDefaultFont != true) {
-			
+
 			Clay.resources.loadAll(
 				[
-				"assets/Muli-Regular.ttf",
-				"assets/Muli-Bold.ttf"
-				], 
+				"assets/Montserrat-Regular.ttf",
+				"assets/Montserrat-Bold.ttf"
+				],
 				function() {
 
 					init();
@@ -189,13 +189,13 @@ class App {
 		}
 
 		input.init();
-		
+
 		connectEvents();
 
 		screen.init();
 		renderer.init();
 		_inited = true;
-		
+
 		debug.init();
 
 		debug.start(DebugTag.process);
@@ -207,7 +207,7 @@ class App {
 	function destroy() {
 
 		disconnectEvents();
-		
+
 		debug.destroy();
 		events.destroy();
 		input.destroy();
@@ -284,7 +284,7 @@ class App {
 		System.removeFramesListener(render);
 
 		input.disable();
-		
+
 	}
 
 	var renderCounter:Int = 0;
@@ -307,7 +307,7 @@ class App {
 
 		// Smooth out the delta over the previous X frames
 		_deltas[_deltaIndex] = frameDelta;
-		
+
 		_deltaIndex++;
 
 		if(_deltaIndex > _deltaSmoothing) {
@@ -331,7 +331,7 @@ class App {
 		}
 
 		emitter.emit(AppEvent.UPDATE, dt);
-		
+
 		renderer.update(dt);
 
 		_lastTime = time;
@@ -343,17 +343,17 @@ class App {
 	inline function tickstart() {
 
 		_verboser("ontickstart");
-		
+
 		cycleNextQueue();
 
 		emitter.emit(AppEvent.TICKSTART, _appEvent);
-		
+
 	}
 
 	inline function tick() {
 
 		_verboser("tick");
-		
+
 		timer.update(dt);
 		events.process();
 		tween.step(dt);
@@ -391,7 +391,7 @@ class App {
 
 		emitter.emit(RenderEvent.RENDER, _renderEvent);
 		renderer.process(f[0]);
-		
+
 		emitter.emit(RenderEvent.POSTRENDER, _renderEvent);
 
 		debug.end(DebugTag.render);
@@ -459,13 +459,13 @@ class App {
 		emitter.emit(AppEvent.TIMESCALE, v);
 
 		return v;
-		
+
 	}
 
 	function set_fixedFrameTime(v:Float):Float {
 
 		return fixedFrameTime = Mathf.clampBottom(v, 0);
-		
+
 	}
 
 }

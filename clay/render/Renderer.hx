@@ -49,7 +49,7 @@ class Renderer {
 	#if !no_debug_console
 	public var stats:RenderStats;
 	#end
-	
+
 	var _textureIds:IntRingBuffer;
 	var _texturesUsed:Int = 0;
 
@@ -74,7 +74,7 @@ class Renderer {
 	public function update(dt:Float) {
 
 		layers.update(dt);
-		
+
 	}
 
 	public function process(f:Framebuffer) {
@@ -117,7 +117,7 @@ class Renderer {
 		}
 
 		shaders.set(name, shader);
-		
+
 	}
 
 	@:noCompletion public function popTextureID():Int {
@@ -147,9 +147,9 @@ class Renderer {
 
 		frontbuffer = new FrontBuffer(this);
 		painter = new Painter(this, batchSize);
-		
+
 		#if !no_default_font
-		font = Clay.resources.font("assets/Muli-Regular.ttf");
+		font = Clay.resources.font("assets/Montserrat-Regular.ttf");
 		#end
 
 		#if !no_debug_console
@@ -200,7 +200,7 @@ class Renderer {
 		target = v;
 
 		return target;
-		
+
 	}
 
 

@@ -62,7 +62,7 @@ class Inspector {
 		overlay.depth = 999;
 		overlay.layer = debug.layer;
 
-		fpsText = new Text(Clay.resources.font("assets/Muli-Regular.ttf"));
+		fpsText = new Text(Clay.resources.font("assets/Montserrat-Regular.ttf"));
 		fpsText.align = TextAlign.LEFT;
 		fpsText.size = 15;
 		fpsText.visible = false;
@@ -78,7 +78,7 @@ class Inspector {
 	}
 
 	public function addTab(name:String) {
-		
+
 		var tab = new InspectorTab(this, name);
 		tab.index = tabs.length;
 		tabs.push(tab);
@@ -123,7 +123,7 @@ class Inspector {
 	}
 
 	function onrender(e) {
-	    
+
         dtAverageAccum += Clay.app.frameDelta;
         dtAverageCount++;
 
@@ -173,7 +173,7 @@ class Inspector {
 	}
 
 	function set_visible(v:Bool):Bool {
-		
+
 		visible = v;
 
 		overlay.visible = visible;
@@ -214,7 +214,7 @@ private class InspectorTab {
 		this.inspector = inspector;
 		this.name = name;
 
-		title = new Text(Clay.resources.font("assets/Muli-Bold.ttf"));
+		title = new Text(Clay.resources.font("assets/Montserrat-Bold.ttf"));
 		title.text = name;
 		title.size = size;
 		title.align = TextAlign.LEFT;
@@ -258,7 +258,7 @@ private class InspectorTab {
 	}
 
 	public function hide() {
-		
+
 		title.visible = false;
 
 	}
